@@ -1,6 +1,6 @@
 from minheap import MinHeap
 from tree import TreeNode
-import json
+import json, os
 
 def build_huffman_tree(freqs):
     nodes = [TreeNode(c, freqs[c]) for c in freqs]
@@ -56,7 +56,8 @@ def decode(code, tree):
 
 
 if __name__ == "__main__":
-    with open("freqs.json", "r") as f:
+    filepath = os.path.dirname(os.path.realpath(__file__))
+    with open(f"{filepath}/freqs.json", "r") as f:
         freqs = json.load(f)
 
     huffman_tree = build_huffman_tree(freqs)
